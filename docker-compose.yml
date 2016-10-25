@@ -1,0 +1,17 @@
+version: "2"
+services:
+  mysql:
+    build: mysql/.
+    environment:
+      - MYSQL_ROOT_PASSWORD=Secure123
+    ports:
+      - 3306:3306
+      - 9100:9100
+      - 9104:9104
+  prometheus:
+    build: prometheus/.
+    ports:
+      - 9090:9090
+    depends_on:
+      - mysql
+    
